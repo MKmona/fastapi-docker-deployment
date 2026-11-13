@@ -22,8 +22,7 @@ ENV PATH="${PATH}:/home/runner/.local/bin"
 
 COPY pyproject.toml poetry.lock ./
 
-RUN pip install --upgrade pip \
-    && pip install --no-cache-dir poetry \
+RUN pip install --no-cache-dir poetry \
     && poetry install --only main
 
 COPY app/ app/
@@ -32,4 +31,4 @@ EXPOSE 8000
 
 ENTRYPOINT [ "poetry", "run" ]
 
-CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+CMD [ "sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT" ]
