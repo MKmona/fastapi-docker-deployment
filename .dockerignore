@@ -1,0 +1,9 @@
+ dockerfile*
+ makefile
+ README.md
+ tests/
+ .pytest*
+ .venv
+ *.txt
+ .envrc
+ .env
